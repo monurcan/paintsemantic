@@ -16,27 +16,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    about.cpp \
     drawpanel.cpp \
     main.cpp \
-    mainwindow.cpp \
-    resize.cpp \
-    zoom.cpp
+    mainwindow.cpp
 
 HEADERS += \
-    about.h \
     drawpanel.h \
-    mainwindow.h \
-    resize.h \
-    zoom.h
+    mainwindow.h
 
 FORMS += \
-    about.ui \
-    mainwindow.ui \
-    resize.ui \
-    zoom.ui
+    mainwindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    splash.png
+
+INCLUDEPATH += /usr/local/include/opencv4
+LIBS += -L/usr/local/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui -lopencv_imgproc
